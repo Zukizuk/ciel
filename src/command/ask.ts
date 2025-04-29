@@ -1,25 +1,18 @@
 import inquirer from "inquirer";
 import { createSpinner } from "nanospinner";
-import {
-  welcome,
-  sleep,
-  success,
-  error,
-  confirm,
-  formatTitle,
-} from "../lib/utils";
+import { sleep, formatTitle } from "../lib/utils";
 import { ChoiceKey, mainMenuChoices } from "../lib/choices";
+import { prompt, welcome } from "../components/globals";
+import { error, success } from "../lib/utils";
+import { title } from "process";
 
 async function ask() {
-  console.log(formatTitle("CIEL Menu"));
-  const answer = await inquirer.prompt<{ action: ChoiceKey }>({
-    name: "action",
-    type: "list",
+  const answer = prompt({
     message: "What do you want to do?",
     choices: mainMenuChoices,
   });
 
-  return answer.action;
+  return answer;
 }
 
 async function handleChoice(choice: ChoiceKey) {
