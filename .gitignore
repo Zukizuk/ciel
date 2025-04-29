@@ -1,0 +1,11 @@
+node_modules
+dist
+coverage
+.vscode
+.DS_Store
+*.log
+*.env
+*.local
+*.test.js
+*.test.ts
+*.test.tsx
