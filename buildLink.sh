@@ -6,7 +6,7 @@ npm run build
 
 # remove old link
 echo "Removing old link..."
-npm unlink zuki
+npm unlink ciel
 
 # create new link
 echo "Creating new link..."

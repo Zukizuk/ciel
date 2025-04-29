@@ -11,7 +11,7 @@ import {
 import { ChoiceKey, mainMenuChoices } from "../lib/choices";
 
 async function ask() {
-  console.log(formatTitle("Zuki CLI Menu"));
+  console.log(formatTitle("CIEL Menu"));
   const answer = await inquirer.prompt<{ action: ChoiceKey }>({
     name: "action",
     type: "list",
@@ -39,7 +39,7 @@ async function handleChoice(choice: ChoiceKey) {
       case ChoiceKey.HELP:
         const helpSpinner = createSpinner("Loading...").start();
         await sleep(1000);
-        helpSpinner.success({ text: "This is a Zuki CLI demo." });
+        helpSpinner.success({ text: "This is a CIEL demo." });
         break;
       case ChoiceKey.EXIT:
         const exitSpinner = createSpinner("Loading...").start();
@@ -56,7 +56,7 @@ async function handleChoice(choice: ChoiceKey) {
 
 async function main() {
   try {
-    await welcome("ZUKI CLI");
+    await welcome("CIEL");
     const choice = await ask();
     await handleChoice(choice);
   } catch (err: any) {

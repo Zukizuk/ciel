@@ -5,7 +5,7 @@ import inquirer from "inquirer";
 import { createSpinner, Spinner } from "nanospinner";
 
 // Display a gradient-colored ASCII art banner
-async function welcome(message: string = "WELCOME ZUKI"): Promise<void> {
+async function welcome(message: string = "WELCOME TO CIEL"): Promise<void> {
   console.clear();
   const msg = figlet.textSync(message, {
     horizontalLayout: "default",

@@ -6,8 +6,8 @@ import main from "./command/ask";
 const program = new Command();
 const version = "1.0.0";
 program
-  .name("Zuki CLI")
-  .description("A command line interface for Zuki")
+  .name("ciel")
+  .description("A command line interface to simplify your work and life")
   .version(version);
 
 // Commands
