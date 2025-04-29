@@ -3,7 +3,7 @@ import { rainbow } from 'gradient-string'
 
 async function welcome() {
   console.clear();
-  const msg = figlet.textSync("Zuki", {
+  const msg = figlet.textSync("WELCOME ZUKI", {
     horizontalLayout: "default",
     verticalLayout: "default",
   });
@@ -11,5 +11,6 @@ async function welcome() {
   console.log(rainbow.multiline(msg));
 }
 
+const sleep = async (ms: number) => new Promise<void>(res => setTimeout(res, ms));
 
-export {welcome}
+export { welcome, sleep }

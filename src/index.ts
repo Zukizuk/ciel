@@ -1,51 +1,20 @@
-#!/usr/bin/env node
+import { Command } from 'commander';
+import figlet from 'figlet';
+import chalk from 'chalk';
+import { welcome } from './lib/utils';
+import main from './command/ask';
 
-import figlet from "figlet";
-import chalk from "chalk";
-import inquirer from "inquirer";
-import { createSpinner } from "nanospinner";
-import { rainbow } from 'gradient-string'
-import { welcome } from "./lib/utils";
+const program = new Command();
+const version = '1.0.0';
+program
+  .name('Zuki CLI')
+  .description('A command line interface for Zuki')
+  .version(version)
 
-const sleep = (ms = 2000) => new Promise(res => setTimeout(res, ms));
+welcome()
 
-
-async function askWhatToDo() {
-  const answer = await inquirer.prompt({
-    name: "action",
-    type: "list",
-    message: "What do you want to do?",
-    choices: [
-      "🔧  Create project",
-      "❓  Help",
-      "🚪  Exit"
-    ],
-  });
-
-  return answer.action;
-}
-
-async function handleChoice(choice: string) {
-  const spinner = createSpinner("Thinking...").start();
-  await sleep();
-
-  switch (choice) {
-    case "🔧  Create project":
-      spinner.success({ text: "Project scaffold coming soon!" });
-      break;
-    case "❓  Help":
-      spinner.success({ text: "This is a Zuki CLI demo." });
-      break;
-    case "🚪  Exit":
-      spinner.success({ text: "Goodbye!" });
-      process.exit(0);
-  }
-}
-
-async function main() {
-  await welcome();
-  const choice = await askWhatToDo();
-  await handleChoice(choice);
-}
-
-main();
+// Commands
+program
+  .command('init')
+  .description('Initialize The Command Line Interface')
+  .action(main);
