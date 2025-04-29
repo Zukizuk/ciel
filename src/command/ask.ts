@@ -23,36 +23,34 @@ async function ask() {
 }
 
 async function handleChoice(choice: ChoiceKey) {
-  const spinner = createSpinner("Loading...").start();
-
   try {
     switch (choice) {
       case ChoiceKey.INITIALIZE:
-        // const shouldProceed = await confirm("Initialize a new project?");
-        // if (shouldProceed) {
-        //   await sleep(1000); // Re-add sleep for consistent UX
-        //   spinner.success({ text: "Project scaffold coming soon!" });
-        //   success("Project initialized successfully!");
-        // } else {
-        //   spinner.stop();
-        //   error("Initialization cancelled.");
-        // }
-        console.log("Project scaffold coming soon!");
-        spinner.success("Project initialized successfully!");
+        const shouldProceed = await confirm("Initialize a new project?");
+        if (shouldProceed) {
+          const spinner = createSpinner("Loading...").start();
+          await sleep(1000); // Simulate processing
+          spinner.success({ text: "Project scaffold coming soon!" });
+          success("Project initialized successfully!");
+        } else {
+          error("Initialization cancelled.");
+        }
         break;
       case ChoiceKey.HELP:
+        const helpSpinner = createSpinner("Loading...").start();
         await sleep(1000);
-        spinner.success({ text: "This is a Zuki CLI demo." });
+        helpSpinner.success({ text: "This is a Zuki CLI demo." });
         break;
       case ChoiceKey.EXIT:
+        const exitSpinner = createSpinner("Loading...").start();
         await sleep(1000);
-        spinner.success({ text: "Goodbye!" });
+        exitSpinner.success({ text: "Goodbye!" });
         process.exit(0);
         break;
     }
   } catch (err: any) {
-    spinner.error({ text: `Error: ${err.message || "Unknown error"}` });
-    throw err; // Re-throw to allow caller to handle or exit
+    error(`Error: ${err.message || "Unknown error"}`);
+    process.exit(1);
   }
 }
 
