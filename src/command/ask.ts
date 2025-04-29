@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import inquirer from "inquirer";
 import { createSpinner } from "nanospinner";
 import { welcome, sleep } from "../lib/utils";
@@ -9,11 +7,7 @@ async function ask() {
     name: "action",
     type: "list",
     message: "What do you want to do?",
-    choices: [
-      "🔧  Initialize a project",
-      "❓  Help",
-      "🚪  Exit"
-    ],
+    choices: ["🔧  Initialize a project", "❓  Help", "🚪  Exit"],
   });
 
   return answer.action;
@@ -41,7 +35,5 @@ async function main() {
   const choice = await ask();
   await handleChoice(choice);
 }
-
-main();
 
 export default main;
