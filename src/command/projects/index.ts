@@ -1,6 +1,7 @@
 import inquirer from "inquirer";
 import { projectMenuChoices, ProjectTypeEnum } from "../../lib/choices";
 import { prompt } from "../../components/globals";
+import { createProject } from "./data-engineering/main";
 
 function whatProject() {
   return prompt({
@@ -14,8 +15,7 @@ async function projectMain() {
     const projectChoice = await whatProject();
     switch (projectChoice) {
       case ProjectTypeEnum.DE:
-        console.log("You chose DE Project");
-        // Add logic for DE Project
+        createProject();
         break;
       case ProjectTypeEnum.ML:
         console.log("You chose Machine Learning");

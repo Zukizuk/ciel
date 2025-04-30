@@ -14,3 +14,10 @@ export interface Config {
   [ConfigKey.MlProjectPath]: string;
   [ConfigKey.LastUsedProject]: string;
 }
+
+export interface FileOrDir {
+  type: "file" | "dir";
+  name: string;
+  content?: string; // Only for files
+  children?: FileOrDir[]; // Only for directories
+}
