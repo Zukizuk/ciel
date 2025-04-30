@@ -1,9 +1,9 @@
 import inquirer from "inquirer";
 import { createSpinner } from "nanospinner";
-import { sleep, success, error } from "../lib/utils";
-import { ConfigChoiceKey, configMenuChoices } from "../lib/choices";
-import { getConfigValue, setConfigValue, readConfig } from "../lib/config";
-import { prompt } from "../components/globals";
+import { sleep, success, error } from "../../lib/utils";
+import { ConfigChoiceKey, configMenuChoices } from "../../lib/choices";
+import { getConfigValue, setConfigValue, readConfig } from "../../lib/config";
+import { prompt } from "../../components/globals";
 
 async function configureMenu() {
   return prompt({

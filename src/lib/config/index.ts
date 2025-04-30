@@ -96,6 +96,25 @@ async function deleteConfigKey<T extends keyof Config>(key: T): Promise<void> {
   await writeConfig(config);
 }
 
+/**
+ * Accepts a user input and resolves it to a ConfigKey enum value.
+ * Allows enum keys or values (case-insensitive).
+ */
+function resolveConfigKey(input: string): ConfigKey | null {
+  const normalized = input.toLowerCase();
+
+  for (const [key, value] of Object.entries(ConfigKey)) {
+    if (
+      key.toLowerCase() === normalized ||
+      value.toLowerCase() === normalized
+    ) {
+      return value as ConfigKey;
+    }
+  }
+
+  return null;
+}
+
 export {
   initConfig,
   readConfig,
@@ -105,4 +124,5 @@ export {
   hasConfigKey,
   deleteConfigKey,
   configFileExists,
+  resolveConfigKey,
 };
