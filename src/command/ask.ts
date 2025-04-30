@@ -5,6 +5,7 @@ import { ChoiceKey, mainMenuChoices } from "../lib/choices";
 import { prompt, welcome } from "../components/globals";
 import { error, success } from "../lib/utils";
 import { title } from "process";
+import projectMain from "./projects";
 
 async function ask() {
   const answer = prompt({
@@ -19,15 +20,7 @@ async function handleChoice(choice: ChoiceKey) {
   try {
     switch (choice) {
       case ChoiceKey.INITIALIZE:
-        const shouldProceed = await confirm("Initialize a new project?");
-        if (shouldProceed) {
-          const spinner = createSpinner("Loading...").start();
-          await sleep(1000); // Simulate processing
-          spinner.success({ text: "Project scaffold coming soon!" });
-          success("Project initialized successfully!");
-        } else {
-          error("Initialization cancelled.");
-        }
+        projectMain();
         break;
       case ChoiceKey.HELP:
         const helpSpinner = createSpinner("Loading...").start();
