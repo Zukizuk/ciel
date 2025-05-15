@@ -6,6 +6,7 @@ import { prompt, welcome } from "../components/globals";
 import { error, success } from "../lib/utils";
 import { title } from "process";
 import projectMain from "./projects";
+import manageMain from "./manage";
 
 async function ask() {
   const answer = prompt({
@@ -21,6 +22,9 @@ async function handleChoice(choice: ChoiceKey) {
     switch (choice) {
       case ChoiceKey.INITIALIZE:
         projectMain();
+        break;
+      case ChoiceKey.MANAGE:
+        manageMain();
         break;
       case ChoiceKey.HELP:
         const helpSpinner = createSpinner("Loading...").start();

@@ -17,7 +17,6 @@ export async function runCommands(
     } catch (err: any) {
       spinner.error({ text: `Failed to run "${command}": ${err.message}` });
       error(`Skipping "${command}" due to error: ${err.message}`);
-      // Continue with next command instead of failing
     }
   }
 }

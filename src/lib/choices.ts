@@ -1,5 +1,6 @@
 // Enum for main menu choice keys
 export enum ChoiceKey {
+  MANAGE = "manage",
   INITIALIZE = "initialize",
   HELP = "help",
   EXIT = "exit",
@@ -26,6 +27,7 @@ interface Choice<T> {
 // Main menu choices
 export const mainMenuChoices: Choice<ChoiceKey>[] = [
   { name: "🔧  Initialize a project", value: ChoiceKey.INITIALIZE },
+  { name: "🛠️   Manage a project", value: ChoiceKey.MANAGE },
   { name: "❓  Help", value: ChoiceKey.HELP },
   { name: "🚪  Exit", value: ChoiceKey.EXIT },
 ];
@@ -40,4 +42,12 @@ export const projectMenuChoices: Choice<ProjectTypeEnum>[] = [
 export const configMenuChoices: Choice<ConfigChoiceKey>[] = [
   { name: "👀  View configuration", value: ConfigChoiceKey.VIEW_CONFIG },
   { name: "🚪  Exit", value: ConfigChoiceKey.EXIT },
+];
+
+export enum ManageMenuChoiceKey {
+  MANAGE_PROJECT = "manage-project",
+}
+
+export const manageMenuChoices: Choice<any>[] = [
+  { name: "Manage project", value: ManageMenuChoiceKey.MANAGE_PROJECT },
 ];

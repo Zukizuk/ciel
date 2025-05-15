@@ -7,6 +7,7 @@ import { createDirectories, writeFile } from "../../../lib/utils/file";
 import { ConfigKey } from "../../../types";
 import { deProjectTemplate } from "../../../templates/de-project";
 import { runCommands } from "../../../lib/utils/exec";
+import { clearConsole, sleep } from "../../../lib/utils";
 
 export async function createProject() {
   const { value } = await inquirer.prompt([
@@ -23,7 +24,8 @@ export async function createProject() {
     },
   ]);
 
-  const configValue = await getConfigValue(ConfigKey.DeProjectPath);
+  // const configValue = await getConfigValue(ConfigKey.DeProjectPath);
+  const configValue = process.cwd();
 
   const basePath = join(configValue!, value);
 
@@ -46,12 +48,12 @@ export async function createProject() {
     }
   }
 
+  console.log(`✅ Project "${value}" initialized at ${basePath}`);
+  // clearConsole();
   runCommands(basePath, [
     "git init",
     "git add .",
     'git commit -m "Initial commit"',
     "git branch -M main",
   ]);
-
-  console.log(`✅ Project "${value}" initialized at ${basePath}`);
 }
